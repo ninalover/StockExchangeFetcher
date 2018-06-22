@@ -1,0 +1,9 @@
+#!/bin/bash
+# opkobling (C) 2018 Martin Østergaard
+# Released Under MIT license.
+# This script is used to fetch end of day stock exchange information.
+# Note i fetch from the danish stock exchange, well because i'm danish :)
+# You need to change this if you want stock information from somewhere else.
+# you can change the date format on the fetched files, i used danish notation.
+
+wget 'https://www.netfonds.no/quotes/exchange.php?exchange=CPH&at_day=`date '+%d'`&at_month=`date '+%m'`&at_year=`date '+%Y'`&format=csv' --output-document=`date '+%d-%m-%Y'`.csv

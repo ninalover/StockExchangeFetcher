@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+# vismineaktier (C) 2018 Martin Østergaard
+# Released Under MIT License.
+#
+# This script shows selected Stocks, witch are previously fetched.
+# You can change the stock you wish to see in the file 'liste'
+#
+
+grepski=$(for a in `cat liste`; do echo "^${a}|" | tr -d '\n' ; done) 
+
+grepski=`echo ${grepski::-1}`;
+
+for l in `ls -1 *.csv | sort` ;
+do
+	echo ${l::-4};
+	cat $l | grep -P ${grepski::-1} | awk '{split($0,a,";"); print "\t",a[1]," ",a[5],"DKK";}'
+
+done
+

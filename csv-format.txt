@@ -1,0 +1,2 @@
+<Aktie Symbol>;<åbning>;<lav>;<sidste>;<volume>;<værdi>
+
