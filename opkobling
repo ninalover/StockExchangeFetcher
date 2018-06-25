@@ -6,4 +6,25 @@
 # You need to change this if you want stock information from somewhere else.
 # you can change the date format on the fetched files, i used danish notation.
 
-wget 'https://www.netfonds.no/quotes/exchange.php?exchange=CPH&at_day=`date '+%d'`&at_month=`date '+%m'`&at_year=`date '+%Y'`&format=csv' --output-document=`date '+%d-%m-%Y'`.csv
+#https://www.netfonds.no/quotes/exchange.php?exchange=CPH&at_day=25&at_month=6&at_year=2018&format=csv
+
+
+d=`date "+%d"`;
+y=`date "+%Y"`;
+m=`date "+%m"`;
+
+http='https://www.netfonds.no/quotes/exchange.php?exchange=CPH';
+atday='&at_day=';
+atmonth='&at_month=';
+atyear='&at_year=';
+format='&format=csv';
+# construct String
+
+str="$http$atday$d$atmonth$m$atyear$y$format";
+
+echo $str;
+
+
+wget "$str" --output-document=`date '+%d-%m-%Y'`.csv ; # snyder lidt med den sidste :P
+
+#wget 'https://www.netfonds.no/quotes/exchange.php?exchange=CPH&at_day=`date '+%d'`&at_month=`date '+%m'`&at_year=`date '+%Y'`&format=csv' --output-document=`date '+%d-%m-%Y'`.csv
